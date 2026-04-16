@@ -139,3 +139,6 @@ Antes de desligar o PC:
 1. Feche QGIS / Python
 2. `./backup_geodados.sh`
 3. Aguarde sync do Google Drive ✅
+
+git commit -m "feat: setup inicial do geodados — PostGIS no WSL com Docker"
+gh repo create geodados --public --source=. --remote=origin --push
