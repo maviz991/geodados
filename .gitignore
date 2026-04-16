@@ -1,0 +1,4 @@
+pgdata/
+geodados_backups/
+*.sql.gz
+*:Zone.Identifier

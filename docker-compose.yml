@@ -1,0 +1,19 @@
+services:
+  postgis:
+    image: postgis/postgis:16-3.4
+    container_name: geodados_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: geo
+      POSTGRES_PASSWORD: geo@1234        # troque para uma senha sua
+      POSTGRES_DB: geodados
+    ports:
+      - "5434:5432"
+    volumes:
+      - ~/geodados/pgdata:/var/lib/postgresql/data   # filesystem WSL — rápido e seguro
+      - ./init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U geo -d geodados"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
