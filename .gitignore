@@ -2,3 +2,6 @@ pgdata/
 geodados_backups/
 *.sql.gz
 *:Zone.Identifier
+.env
+venv/
+.venv/

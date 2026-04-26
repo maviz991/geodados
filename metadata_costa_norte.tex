@@ -1,0 +1,158 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{parskip}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\title{\textbf{Cartographic Product Metadata}\\
+\large Bottom Trawl Tracks on the Northern Coast of Brazil}
+\author{[INSTITUTION PLACEHOLDER]}
+\date{2026-04-21}
+
+\begin{document}
+
+\maketitle
+\noindent\textbf{Compliance:} ISO 19115 -- Core Metadata Set
+\hrule
+\vspace{1em}
+
+% =============================================================
+\section{Resource Identification}
+
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+File Identifier     & trawl\_tracks\_northern\_coast\_brazil\_2026 \\
+Title               & Bottom Trawl Tracks on the Northern Coast of Brazil \\
+Language            & eng \\
+Character Set       & UTF-8 \\
+Hierarchy Level     & dataset \\
+Spatial Rep. Type   & vector \\
+Date                & 2026-04-21 \\
+Date Type           & creation \\
+\end{tabular}
+
+\vspace{1em}
+\noindent\textbf{Abstract:}
+Cartographic product developed through the integration of bathymetric data from the General Bathymetric Chart of the Oceans (GEBCO 2025), official administrative boundaries from the Brazilian Institute of Geography and Statistics (IBGE 2024), and georeferenced bottom trawl records collected along the northern coast of Brazil. The map represents trawling tracks, state boundaries, and bathymetric gradients of the study area, spanning from the mouth of the Oiapoque River to the Pará shelf. Intended for fisheries research, environmental impact assessment, and marine spatial planning.
+
+\vspace{0.5em}
+\noindent\textbf{Keywords:} Bottom trawl, Fisheries, Northern Coast, Amazon shelf, Bathymetry, GEBCO, IBGE, GIS, SIRGAS 2000
+
+\noindent\textbf{Topic Category:} oceans, biota
+
+\vspace{0.5em}
+\noindent\textbf{Spatial Extent:} Northern Coast of Brazil -- Amapá and Pará shelf
+
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Northern Latitude   & 6.000000° \\
+Southern Latitude   & 0.000000° \\
+Western Longitude   & -54.000000° \\
+Eastern Longitude   & -43.000000° \\
+\end{tabular}
+
+\vspace{0.5em}
+\noindent\textbf{Point of Contact:}
+
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Name          & [AUTHOR PLACEHOLDER] \\
+Institution   & [INSTITUTION PLACEHOLDER] \\
+E-mail        & [EMAIL PLACEHOLDER] \\
+\end{tabular}
+
+% =============================================================
+\section{Spatial Reference System}
+
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Reference System    & SIRGAS 2000 \\
+Coordinate Type     & Geographic \\
+Unit of Measurement & Decimal degrees (°) \\
+EPSG Code           & 4674 \\
+Cartographic Scale  & 1:3,000,000 \\
+\end{tabular}
+
+% =============================================================
+\section{Data Sources (Lineage / Source)}
+
+\subsection{Bathymetry}
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Source    & \textit{GEBCO 2025 Grid} \\
+Provider  & GEBCO Compilation Group, British Oceanographic Data Centre (BODC), National Oceanography Centre, NERC \\
+Year      & 2025 \\
+Available at & \url{https://www.gebco.net/data_and_products/gridded_bathymetry_data/} \\
+Accessed on  & 2026-04-21 \\
+\end{tabular}
+
+\subsection{Administrative Boundaries}
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Source    & \textit{Territorial Meshes: State and National Boundaries -- Official Shapefiles} \\
+Provider  & Instituto Brasileiro de Geografia e Estatística (IBGE), Directorate of Geosciences \\
+Year      & 2024 \\
+Available at & \url{https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais.html} \\
+Accessed on  & 2026-04-21 \\
+\end{tabular}
+
+\subsection{Trawl Data}
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Source    & Bottom trawl survey records -- Northern Coast of Brazil \\
+Provider  & [INSTITUTION PLACEHOLDER] \\
+Period    & 2017--2022 \\
+Format    & Tabular CSV (georeferenced start and end coordinates) \\
+CRS       & SIRGAS 2000 / EPSG:4674 \\
+\end{tabular}
+
+% =============================================================
+\section{Data Quality and Lineage}
+
+\noindent\textbf{Scope:} dataset
+
+\noindent\textbf{Process Description:}
+\begin{enumerate}
+    \item \textbf{Data acquisition:} Download of GEBCO 2025 GeoTIFF (extent: N~6°, S~0°, W~-54°, E~-43°) and IBGE 2024 state boundary shapefiles.
+    \item \textbf{Standardization:} Reprojection of all layers to SIRGAS 2000 (EPSG:4674) and coordinate normalization of trawl records (DMS and decimal degrees, mixed format) using a custom Python ETL pipeline.
+    \item \textbf{Spatial integration:} Overlay of bathymetry, administrative boundaries, and trawl tracks in a GIS environment (QGIS 3.x / PostGIS 16).
+    \item \textbf{Editing and validation:} Topological verification, symbology adjustments, contour line generation (-50\,m, -100\,m, -200\,m isobaths), and geographic consistency checks.
+    \item \textbf{Final product:} Exported in PDF and PNG at multiple resolutions for digital and printed use.
+\end{enumerate}
+
+% =============================================================
+\section{Distribution}
+
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Available Formats & PDF, PNG \\
+Distributor       & [INSTITUTION PLACEHOLDER] \\
+\end{tabular}
+
+% =============================================================
+\section{Metadata Information}
+
+\begin{tabular}{>{\bfseries}p{5cm} p{9cm}}
+Metadata Language        & eng \\
+Metadata Standard        & ISO 19115:2003 -- Geographic Information -- Metadata \\
+Standard Version         & 2003 \\
+Metadata Date            & 2026-04-21 \\
+Metadata Contact         & [AUTHOR PLACEHOLDER] / [INSTITUTION PLACEHOLDER] \\
+\end{tabular}
+
+% =============================================================
+\section*{References}
+
+\begin{itemize}
+    \item GEBCO Compilation Group. (2025). \textit{GEBCO 2025 Grid}. British Oceanographic Data Centre, National Oceanography Centre, NERC. Retrieved 2026-04-21, from \url{https://www.gebco.net/data_and_products/gridded_bathymetry_data/}
+
+    \item Instituto Brasileiro de Geografia e Estatística (IBGE). (2024). \textit{Malhas territoriais: limites estaduais e nacionais -- official shapefiles}. Rio de Janeiro: IBGE, Directorate of Geosciences. Retrieved 2026-04-21, from \url{https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais.html}
+\end{itemize}
+
+\end{document}
